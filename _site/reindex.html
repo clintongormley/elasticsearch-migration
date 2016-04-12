@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>elasticsearch reindex tool</title>
+<link href="css/font-awesome.css" media="all" rel="stylesheet" />
+<link href="styles.css" media="all" rel="stylesheet" />
+<script type="text/javascript" src="js/bluebird/bluebird.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="js/tablesorter/tablesorter.min.js"></script>
+<script type="text/javascript" src="js/lodash/lodash.min.js"></script>
+<script type="text/javascript" src="js/client.js"></script>
+<script type="text/javascript" src="js/reindex.js"></script>
+<script type="text/javascript">
+<!--
+  jQuery(function() {
+    jQuery('#es_host').val(location.protocol + '//' + location.host);
+    jQuery('#main_form').submit(function(e) {
+      e.preventDefault();
+      run();
+      return false;
+    });
+    var intro_button = jQuery('#intro_button');
+    intro_button.click(function(e) {
+      jQuery('#intro p, #intro ul').toggle(200);
+      intro_button.blur();
+      intro_button.text() === 'Hide' ? intro_button.text('Show') : intro_button
+        .text('Hide');
+    });
+  });
+
+  var run = function() {
+    var host = jQuery('#es_host').val();
+    var indices = jQuery('#indices').val();
+
+    var enable_creds = jQuery('#enable_creds').is(':checked');
+    new ReindexController(host, '#log_wrapper', '#table_wrapper', enable_creds);
+  };
+
+  -->
+</script>
+</head>
+<body>
+  <div id="body">
+    <h1>Elasticsearch Reindex Helper</h1>
+    <div id="intro">
+      <button id="intro_button">Hide</button>
+      <p>
+        Indices created before <b>Elasticsearch 2.0</b> need to be
+        reindexed in order to be usable by <b>Elasticsearch 5.0</b>
+        and above. This tool will help you to identify and reindex old
+        indices.
+      </p>
+      <p>
+        This tool works with Elasticsearch versions <b>2.3.0 to
+          2.x</b> only.
+      </p>
+      <b>Important:</b>
+      <ul>
+        <li><b>Back up your indices before reindexing your
+            data.</b></li>
+        <li>Indices will be reindexed to a new index called <code>{name}-{version}</code>,
+          where <code>version</code> is the version of Elasticsearch,
+          e.g. <code>my_index-2.3.0</code>.
+        </li>
+        <li>The alias <code>{name}</code> will be added to the
+          new index, along with any other aliases that previously
+          pointed to the old index.
+        </li>
+        <li>The old index will be made <b>read-only</b> during
+          the reindexing process, after which it will be deleted.
+        </li>
+        <li>The handover between the old and new index is <b>not
+            atomic</b>. There may be a small window between deleting the
+          old index and adding an alias pointing to the new index
+          during which neither index is available.
+        </li>
+        <li>This tool will only function with <b>open</b> indices
+          with status <b><code>green</code></b>. The reindex process
+          waits for the new index to turn <code>green</code> before
+          completing.
+        </li>
+      </ul>
+    </div>
+    <form id="main_form">
+      <div>
+        <input type="text" name="es_host" id="es_host"
+          value="http://localhost:9200"
+        />
+        <button type="submit">List old indices</button>
+        <br> <label id="creds_label" for="enable_creds">
+          Enable basic AUTH support </label> <input type="checkbox"
+          name="enable_creds" id="enable_creds"
+        />
+      </div>
+    </form>
+    <div id="log_wrapper"></div>
+    <div id="table_wrapper"></div>
+  </div>
+</body>
+</html>

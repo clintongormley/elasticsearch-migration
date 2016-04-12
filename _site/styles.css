@@ -1,0 +1,224 @@
+/* ----- General rules ----------------------------------------------------- */
+html, body, div, h1, ul, li, a, p {
+  font-family: Open Sans, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.4em;
+}
+
+body {
+  color: #777;
+  background: white url('images/body_bg.png') repeat-x 0 20px;
+  margin: 0;
+  padding: 0;
+}
+
+a, a:hover, a:visited {
+  color: #31beb1;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ----- Body and intro ---------------------------------------------------- */
+div#body {
+  max-width: 1100px;
+  margin: 10px auto;
+  padding-top: 90px;
+  background: transparent url('images/elastic.jpeg') 0px 0px no-repeat;
+}
+
+h1 {
+  color: white;
+  font-size: 32px;
+  text-align: left;
+  font-family: Gibson-Regular, Arial, Helvetica, sans-serif;
+  height: 32px;
+  margin-bottom: 60px;
+}
+
+#intro {
+  max-width: 700px;
+  border: 1px solid #40d6ca;
+  border-radius: 0px 10px 0 10px;
+  padding: 15px 25px 15px 15px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+#intro p, #intro li {
+  line-height: 1.4em;
+}
+
+#intro_button {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #40d6ca;
+  color: white;
+  border: 1px solid #40d6ca;
+  border-top: 1px solid white;
+  font-size: 1em;
+  border-radius: 0 0 5px 5px;
+  margin: -1px -1px 0 0;
+  z-index: 10000;
+  cursor: pointer;
+  border-radius: 0 0 5px 5px;
+}
+
+b {
+  color: #555;
+}
+
+code {
+  color: #555;
+  font-family: Consolas, Menlo, 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', monospace;
+  background: #eee;
+  padding: 2px 1px;
+}
+
+/* ----- Form -------------------------------------------------------------- */
+#main_form {
+  max-width: 735px;
+  padding: 15px 5px 15px 0px;
+  margin: 0;
+}
+
+#creds_label {
+  font-size: 90%;
+  margin-left: 0.5em;
+}
+
+#main_form input[type=text], #main_form button[type=submit] {
+  font-size: 100%;
+  padding: 0.25em 0.5em;
+  margin-right: 0;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  width: 63%;
+  top: -1px;
+}
+
+#main_form button[type=submit] {
+  background: url("images/go.png") no-repeat right 50% #31beb1;
+  cursor: pointer;
+  border: none;
+  color: white;
+  padding: 0.4em 1em;
+  line-height: 1em;
+  height: 2em;
+  border-radius: 35px;
+  margin-left: 1%;
+  width: 35%;
+}
+
+#main_form button[type=submit]:focus {
+  outline: none;
+}
+
+/* ----- Table --------------------------------------------------------------- */
+table {
+  table-layout: fixed;
+}
+
+th {
+  text-align: left;
+  color: #555;
+  cursor: pointer;
+}
+
+th:before {
+  font-family: Consolas, Menlo, 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', monospace;
+  font-size: 0.8em;
+}
+
+th.asc:before {
+  content: "\2191";
+}
+
+th.desc:before {
+  content: "\2193";
+}
+
+th, td {
+  font-family: Consolas, Menlo, 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', monospace;
+  white-space: nowrap;
+  vertical-align: top;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-right: 2px;
+  padding: 2px;
+}
+
+td:hover {
+  position: absolute;
+  display: block;
+  background: white;
+  outline: 4px solid #eee;
+  white-space: normal;
+  overflow: auto;
+  text-overflow: clip;
+}
+
+col.Status, col.Docs, col.Created {
+  width: 6.5em;
+}
+
+col.Action, col.Shards, col.Size, col.Version, col.Replicas {
+  width: 5em;
+}
+
+col.Info {
+  width: 10em;
+}
+
+td:last-of-type {
+  max-width: 15em;
+}
+
+tr.Red, tr.Yellow, tr.Closed {
+  background: #eee;
+}
+
+tr.Red {
+  background: rgb(255, 244, 244);
+}
+
+tr.Yellow {
+  background: rgb(254, 255, 244);
+}
+
+tr.Reindexing td {
+  color: green;
+}
+
+tr.Error td {
+  color: red;
+}
+
+/* ----- Log --------------------------------------------------------------- */
+div#log_wrapper {
+  padding: 10px;
+  margin-bottom: 1em;
+  color: red;
+  max-width: 700px;
+}
+
+div#show_hide_green {
+  color: #999;
+  font-size: 80%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* ----- Lists ------------------------------------------------------------- */
+
+/* ----- List items -------------------------------------------------------- */
